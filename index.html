@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,54 @@
     <script src="p5.js"></script>
 </head>
 <body>
-    <h1> i hate coding </h1>
-    <script src="circle.js"></script>
+    <h1> i love coding </h1>
+
+
+    <style>
+ .lb { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; z-index: 9999; }
+ .lb.open { display: block; }
+ .lb iframe { position: absolute; top: 5vh; left: 5vw; width: 90vw; height: 90vh; border: 0; background: #fff; }
+ .lb button {  z-index: 99; position: absolute; top: 1rem; right: 1rem; width: 3rem; height: 3rem; font-size: 1.5rem; background: #fff; border: 0; cursor: pointer; }
+</style>
+
+<div class="gallery">
+    <a href="circle.html"><img src="circle.png" alt="My Sketch"></a>
+    <a href="dessin.html"><img src="dessin.png" alt="My Sketch"></a>
+    <a href="circlerelief.html"><img src="circlerelief.png" alt="My Sketch"></a>
+    <a href="bouncyobject.html"><img src="bouncyobject.png" alt="My Sketch"></a>
+    <a href="logoDVD test.html"><img src="logoDVD test.png" alt="My Sketch"></a>
+    <a href="logoDVD.html"><img src="logoDVD.png" alt="My Sketch"></a>
+    <a href="tableau.html"><img src="tableau.png" alt="My Sketch"></a>
+    <a href="damier.html"><img src="damier.png" alt="My Sketch"></a>
+    <a href="torus3d.html"><img src="torus3d.png" alt="My Sketch"></a>
+    <a href="neuch.html"><img src="neuch.png" alt="My Sketch"></a>  
+    
+ <!-- ajouter d’autres esquisses ici -->
+</div>
+
+<div class="lb" id="lb" aria-hidden="true">
+ <button type="button" aria-label="Fermer">×</button>
+ <iframe allow="camera; microphone; autoplay"></iframe>
+</div>
+
+<script>
+ function makeLightbox(){
+  const lb = document.getElementById('lb');
+  const frame = lb.querySelector('iframe');
+  const close = lb.querySelector('button');
+
+  const open = url => { frame.src = url; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); };
+  const shut = () => { frame.src = 'about:blank'; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); };
+
+  document.querySelectorAll('.gallery a').forEach(a => {
+   a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
+  });
+  close.addEventListener('click', shut);
+  lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) shut(); });
+ }
+ makeLightbox();
+</script>
     
     
 </body>

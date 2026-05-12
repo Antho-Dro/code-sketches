@@ -1,4 +1,13 @@
 body{
     font-family: system-ui;
-    background-color : blue
+    background-color : #B9B7AE
+}
+
+img{max-width: 100%;}
+
+.gallery {
+display: grid;
+gap: 1rem;
+grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+grid-auto-rows: 1fr;
 }
