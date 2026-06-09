@@ -1,3 +1,7 @@
 body{
-    background-color: azure;
+    background-color: #333;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Droz - ID432</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="p5.js"></script>
+</head>
+<body>
+    <h1> Mes projets </h1>
+
+
+    <style>
+ .lb { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; z-index: 9999; }
+ .lb.open { display: block; }
+ .lb iframe { position: absolute; top: 5vh; left: 5vw; width: 90vw; height: 90vh; border: 0; background: #fff; }
+ .lb button {  z-index: 99; position: absolute; top: 1rem; right: 1rem; width: 3rem; height: 3rem; font-size: 1.5rem; background: #fff; border: 0; cursor: pointer; }
+</style>
+
+<div class="gallery">
+    <a href="dessin v1.html"><img src="dessin v1.png" alt="My Sketch"></a>
+    <a href="circle.html"><img src="circle.png" alt="My Sketch"></a>
+    <a href="logo-dvd v0.1.html"><img src="logo-dvd v0.1.png" alt="My Sketch"></a>
+    <a href="logo-dvd v0.2.html"><img src="logo-dvd v0.2.png" alt="My Sketch"></a>
+    <a href="loop-stoopid.html"><img src="loop-stoopid.png" alt="My Sketch"></a>
+    <a href="damier.html"><img src="damier.png" alt="My Sketch"></a>
+    <a href="circle-relief.html"><img src="circle-relief.png" alt="My Sketch"></a>
+    <a href="torus-3D.html"><img src="torus-3D.png" alt="My Sketch"></a>
+    <a href="tableau.html"><img src="tableau.png" alt="My Sketch"></a> 
+    <a href="bouncy-object v0.1.html"><img src="bouncy-object v0.1.png" alt="My Sketch"></a>
+    <a href="bouncy-object v0.2.html"><img src="bouncy-object v0.2.png" alt="My Sketch"></a>
+    <a href="logo-dvd v1.html"><img src="logo-dvd v1.png" alt="My Sketch"></a>
+    <a href="neuch.html"><img src="neuch.png" alt="My Sketch"></a> 
+    <a href="color-flipper.html"><img src="color-flipper.png" alt="My Sketch"></a>
+
+ <!-- ajouter d’autres esquisses ici -->
+</div>
+
+<div class="lb" id="lb" aria-hidden="true">
+ <button type="button" aria-label="Fermer">×</button>
+ <iframe allow="camera; microphone; autoplay"></iframe>
+</div>
+
+<script>
+ function makeLightbox(){
+  const lb = document.getElementById('lb');
+  const frame = lb.querySelector('iframe');
+  const close = lb.querySelector('button');
+
+  const open = url => { frame.src = url; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); };
+  const shut = () => { frame.src = 'about:blank'; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); };
+
+  document.querySelectorAll('.gallery a').forEach(a => {
+   a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
+  });
+  close.addEventListener('click', shut);
+  lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) shut(); });
+ }
+ makeLightbox();
+</script>
+    
+    
+</body>
+</html>

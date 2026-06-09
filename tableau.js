@@ -8,28 +8,29 @@ function setup() {
   
   colors = make2Darray(cols, rows);
   
-  console.log( colors);
+  //console.log( colors);
   
   for ( i=0; i<cols; i++){
     for ( j=0; j<rows; j++){
       colors[i][j] = random(255); 
-      //console.log( colors[i][j]);
-     }//j 
-  }//i
-  //dessiner
+      
+     }
+  }
+  
   for ( let a=0; a<cols; a++){
     for (let b=0; b< rows; b++){
-      let x = a*30;
-      let y = b*30;
+      let x = a * 30 + 15;
+      let y = b * 30 + 15;
+      
       fill (colors [a][b]);
       stroke (0);
-      rect (x, y, 30, 30);
+      circle(x, y, 30);
     }
   }
   
 }
 
-// usine de papier quadrillé...
+
 function make2Darray (cols, rows){
   var arr = new Array(cols);
   for (var i = 0; i<arr.length; i++){

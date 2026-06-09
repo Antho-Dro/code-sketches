@@ -1,64 +1,310 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Droz</title>
+    <title>Anthony Droz - ID432</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-
-    <script src="p5.js"></script>
 </head>
+
 <body>
-    <h1> i love coding </h1>
+
+    <div class="tabs">
+        <button class="tab active" data-tab="js-tab">javascript</button>
+        <button class="tab" data-tab="video-tab">vidéo</button>
+    </div>
+
+    <main class="tab-content active" id="js-tab">
+
+        <div class="carousel">
+
+            <div class="gallery-wrapper">
+
+                <div class="gallery" id="gallery">
+
+                    <a href="dessin v1.html" class="item active">
+                    <img src="dessin v1.png" alt="dessin v1">
+                </a>
+
+                <a href="circle.html" class="item">
+                    <img src="circle.png" alt="circle">
+                </a>
+
+                <a href="logo-dvd v0.1.html" class="item">
+                    <img src="logo-dvd v0.1.png" alt="logo dvd v0.1">
+                </a>
+
+                <a href="logo-dvd v0.2.html" class="item">
+                    <img src="logo-dvd v0.2.png" alt="logo dvd v0.2">
+                </a>
+
+                <a href="loop-stoopid.html" class="item">
+                    <img src="loop-stoopid.png" alt="loop stoopid">
+                </a>
+
+                <a href="damier.html" class="item">
+                    <img src="damier.png" alt="damier">
+                </a>
+
+                <a href="circle-relief.html" class="item">
+                    <img src="circle-relief.png" alt="circle relief">
+                </a>
+
+                <a href="torus-3D.html" class="item">
+                    <img src="torus-3D.png" alt="torus 3D">
+                </a>
+
+                <a href="tableau.html" class="item">
+                    <img src="tableau.png" alt="tableau">
+                </a>
+
+                <a href="bouncy-object v0.1.html" class="item">
+                    <img src="bouncy-object v0.1.png" alt="bouncy object v0.1">
+                </a>
+
+                <a href="bouncy-object v0.2.html" class="item">
+                    <img src="bouncy-object v0.2.png" alt="bouncy object v0.2">
+                </a>
+
+                <a href="logo-dvd-v1.html" class="item">
+                    <img src="logo-dvd-v1.png" alt="logo-dvd v1">
+                </a>
+
+                <a href="neuch.html" class="item">
+                    <img src="neuch.png" alt="neuch">
+                </a>
+
+                <a href="color-flipper.html" class="item">
+                    <img src="color-flipper.png" alt="color flipper">
+                </a>
+
+                 <a href="sensitive-particles.html" class="item">
+                    <img src="sensitive-particles.png" alt="sensitive-particles">
+                </a>
+
+                <a href="curve.html" class="item">
+                    <img src="curve.png" alt="curve">
+                </a>
+
+                <a href="organisme-v1.0.html" class="item">
+                    <img src="organisme-v1.0.png" alt="organisme">
+                </a>
+
+                 <a href="solar.html" class="item">
+                    <img src="solar.png" alt="solar">
+                </a>
+                </div>
+
+            </div>
+
+            <div class="controls">
+                <button id="prev" class="arrow-btn">
+                    <img src="arrow v2.svg" alt="précédent" class="arrow left">
+                </button>
+
+                <button id="next" class="arrow-btn">
+                    <img src="arrow v2.svg" alt="suivant" class="arrow">
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <main class="tab-content" id="video-tab">
+
+        <section class="showreel">
+
+             <link rel="stylesheet" href="showreel.css">
+<section id="showreel">
+    <video id="showreel-video" playsinline muted></video>
+    <button id="showreel-pause-btn" class="ctrl-btn ctrl-btn-bl" aria-label="Pause showreel">
+      <img src="sh-icons/pause.svg" alt="">
+    </button>
+    <button id="showreel-mute-btn" class="ctrl-btn ctrl-btn-br" aria-label="Unmute showreel">
+      <img src="sh-icons/mute.svg" alt="">
+    </button>
+  </section>
+
+  <section id="sh-gallery"></section>
+
+  <div id="lightbox" hidden>
+    <div class="lightbox-stage">
+      <video id="lightbox-video" playsinline></video>
+      <div id="lightbox-progress"><div id="lightbox-progress-fill"></div></div>
+      <div id="lightbox-caption">
+        <h2 id="lightbox-title"></h2>
+        <p id="lightbox-description"></p>
+      </div>
+    </div>
+    <button id="lightbox-close-btn" class="ctrl-btn ctrl-btn-tl" aria-label="Close">
+      <img src="sh-icons/close.svg" alt="">
+    </button>
+    <button id="lightbox-fullscreen-btn" class="ctrl-btn ctrl-btn-tr" aria-label="Fullscreen">
+      <img src="sh-icons/fullscreen.svg" alt="">
+    </button>
+    <button id="lightbox-mute-btn" class="ctrl-btn ctrl-btn-br" aria-label="Unmute">
+      <img src="sh-icons/mute.svg" alt="">
+    </button>
+  </div>
+
+  <script>
+
+    const FRAME_RATE = 30;
 
 
-    <style>
- .lb { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; z-index: 9999; }
- .lb.open { display: block; }
- .lb iframe { position: absolute; top: 5vh; left: 5vw; width: 90vw; height: 90vh; border: 0; background: #fff; }
- .lb button {  z-index: 99; position: absolute; top: 1rem; right: 1rem; width: 3rem; height: 3rem; font-size: 1.5rem; background: #fff; border: 0; cursor: pointer; }
-</style>
+    const showreelClips = [
+      ["sh-clouds.mp4",     "00:03:00", "00:05:00"],
+      ["sh-demolition.mp4", "00:03:00", "00:05:00"],
+      ["sh-eclipse.mp4",    "00:03:00", "00:05:00"],
+    ];
 
-<div class="gallery">
-    <a href="circle.html"><img src="circle.png" alt="My Sketch"></a>
-    <a href="dessin.html"><img src="dessin.png" alt="My Sketch"></a>
-    <a href="circlerelief.html"><img src="circlerelief.png" alt="My Sketch"></a>
-    <a href="bouncyobject.html"><img src="bouncyobject.png" alt="My Sketch"></a>
-    <a href="logoDVD test.html"><img src="logoDVD test.png" alt="My Sketch"></a>
-    <a href="logoDVD.html"><img src="logoDVD.png" alt="My Sketch"></a>
-    <a href="tableau.html"><img src="tableau.png" alt="My Sketch"></a>
-    <a href="damier.html"><img src="damier.png" alt="My Sketch"></a>
-    <a href="torus3d.html"><img src="torus3d.png" alt="My Sketch"></a>
-    <a href="neuch.html"><img src="neuch.png" alt="My Sketch"></a>  
+    const galleryVideos = [
+      { src: "sh-clouds.mp4",     title: "Clouds",     description: "Drifting overhead." },
+      { src: "sh-demolition.mp4", title: "Demolition", description: "A wall comes down." },
+      { src: "sh-eclipse.mp4",    title: "Eclipse",    description: "The moon crossing the sun." },
     
- <!-- ajouter d’autres esquisses ici -->
-</div>
+    ];
 
-<div class="lb" id="lb" aria-hidden="true">
- <button type="button" aria-label="Fermer">×</button>
- <iframe allow="camera; microphone; autoplay"></iframe>
-</div>
+    const lightboxStartsMuted = true;
+    const lightboxShowsCaption = true;
+  </script>
+  <script src="sh-app.js"></script>
+              
+        </section>
+        
 
-<script>
- function makeLightbox(){
-  const lb = document.getElementById('lb');
-  const frame = lb.querySelector('iframe');
-  const close = lb.querySelector('button');
+    </main>
 
-  const open = url => { frame.src = url; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); };
-  const shut = () => { frame.src = 'about:blank'; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); };
+    <footer>
+        Anthony Droz - ID432 - dev interface
+    </footer>
 
-  document.querySelectorAll('.gallery a').forEach(a => {
-   a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
-  });
-  close.addEventListener('click', shut);
-  lb.addEventListener('click', e => { if (e.target === lb) shut(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) shut(); });
- }
- makeLightbox();
-</script>
-    
-    
+    <div class="lb" id="lb" aria-hidden="true">
+        <button type="button" class="close-btn" aria-label="Fermer">×</button>
+        <iframe></iframe>
+    </div>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        const items = document.querySelectorAll('.item');
+
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+
+        const lb = document.getElementById('lb');
+        const frame = lb.querySelector('iframe');
+        const closeBtn = lb.querySelector('.close-btn');
+
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        let currentIndex = 0;
+
+        function updateGallery() {
+            items.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            items[currentIndex].classList.add('active');
+
+            const itemWidth = items[currentIndex].offsetWidth;
+            const gap = 32;
+
+            const centerPosition = window.innerWidth / 2;
+
+            const itemPosition =
+                currentIndex * (itemWidth + gap) +
+                itemWidth / 2;
+
+            const offset = centerPosition - itemPosition;
+
+            gallery.style.transform = `translateX(${offset}px)`;
+        }
+
+        next.addEventListener('click', () => {
+            currentIndex++;
+
+            if (currentIndex >= items.length) {
+                currentIndex = 0;
+            }
+
+            updateGallery();
+        });
+
+        prev.addEventListener('click', () => {
+            currentIndex--;
+
+            if (currentIndex < 0) {
+                currentIndex = items.length - 1;
+            }
+
+            updateGallery();
+        });
+
+        items.forEach(item => {
+            item.addEventListener('click', e => {
+                e.preventDefault();
+
+                frame.src = item.href;
+
+                lb.classList.add('open');
+                lb.setAttribute('aria-hidden', 'false');
+            });
+        });
+
+        function closeLightbox() {
+            frame.src = 'about:blank';
+
+            lb.classList.remove('open');
+            lb.setAttribute('aria-hidden', 'true');
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        lb.addEventListener('click', e => {
+            if (e.target === lb) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+
+                tabs.forEach(button => {
+                    button.classList.remove('active');
+                });
+
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                tab.classList.add('active');
+                document.getElementById(target).classList.add('active');
+
+                updateGallery();
+            });
+        });
+
+        window.addEventListener('resize', updateGallery);
+
+        updateGallery();
+    </script>
+
 </body>
+
 </html>

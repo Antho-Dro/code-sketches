@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Showreel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section id="showreel">
+    <video id="showreel-video" playsinline muted></video>
+    <button id="showreel-pause-btn" class="ctrl-btn ctrl-btn-bl" aria-label="Pause showreel">
+      <img src="icons/pause.svg" alt="">
+    </button>
+    <button id="showreel-mute-btn" class="ctrl-btn ctrl-btn-br" aria-label="Unmute showreel">
+      <img src="icons/mute.svg" alt="">
+    </button>
+  </section>
+
+  <section id="gallery"></section>
+
+  <div id="lightbox" hidden>
+    <div class="lightbox-stage">
+      <video id="lightbox-video" playsinline></video>
+      <div id="lightbox-progress"><div id="lightbox-progress-fill"></div></div>
+      <div id="lightbox-caption">
+        <h2 id="lightbox-title"></h2>
+        <p id="lightbox-description"></p>
+      </div>
+    </div>
+    <button id="lightbox-close-btn" class="ctrl-btn ctrl-btn-tl" aria-label="Close">
+      <img src="icons/close.svg" alt="">
+    </button>
+    <button id="lightbox-fullscreen-btn" class="ctrl-btn ctrl-btn-tr" aria-label="Fullscreen">
+      <img src="icons/fullscreen.svg" alt="">
+    </button>
+    <button id="lightbox-mute-btn" class="ctrl-btn ctrl-btn-br" aria-label="Unmute">
+      <img src="icons/mute.svg" alt="">
+    </button>
+  </div>
+
+  <script>
+    // ----- Configuration -----
+
+    // Default frame rate, used when a gallery entry doesn't specify its own `fps`.
+    const FRAME_RATE = 30;
+
+    // Showreel clips: [filename, start SMPTE, end SMPTE].
+    // Timecodes are "HH:MM:SS:FF" or "MM:SS:FF" (HH defaults to 00).
+    // ";" before frames is accepted (drop-frame notation).
+    // Frames are interpreted using the matching gallery entry's `fps`
+    // (or FRAME_RATE if not set).
+    const showreelClips = [
+      ["clouds.mp4",     "00:03:00", "00:05:00"],
+      ["demolition.mp4", "00:03:00", "00:05:00"],
+      ["eclipse.mp4",    "00:03:00", "00:05:00"],
+    ];
+
+    const galleryVideos = [
+      { src: "clouds.mp4",     title: "Clouds",     description: "Drifting overhead." },
+      { src: "demolition.mp4", title: "Demolition", description: "A wall comes down." },
+      { src: "eclipse.mp4",    title: "Eclipse",    description: "The moon crossing the sun." },
+      // Add `fps: 24` (or any value) per entry to override FRAME_RATE for that video.
+    ];
+
+    const lightboxStartsMuted = true;
+    const lightboxShowsCaption = true;
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
